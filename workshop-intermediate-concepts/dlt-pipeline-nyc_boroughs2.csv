@@ -1,0 +1,173 @@
+uhf_code,borough,neighborhood,zip_code,operation,sequence_number
+101,Bronx,Kingsbridge - Riverdale,10471,insert,4
+101,Bronx,Kingsbridge - Riverdale,10463,delete,4
+102,Bronx,Northeast Bronx,10470,insert,3
+102,Bronx,Northeast Bronx,10475,update,4
+102,Bronx,Northeast Bronx,10469,update,3
+102,Bronx,Northeast Bronx,10466,insert,0
+103,Bronx,Fordham - Bronx Park,10468,insert,3
+103,Bronx,Fordham - Bronx Park,10467,update,2
+103,Bronx,Fordham - Bronx Park,10458,delete,5
+104,Bronx,Pelham - Throgs Neck,10472,update,1
+104,Bronx,Pelham - Throgs Neck,,insert,2
+104,Bronx,Pelham - Throgs Neck,10473,update,5
+104,Bronx,Pelham - Throgs Neck,10462,insert,0
+104,Bronx,Pelham - Throgs Neck,10464,insert,5
+104,Bronx,Pelham - Throgs Neck,10465,delete,4
+105,Bronx,Crotona - Tremont,10453,insert,0
+105,Bronx,Crotona - Tremont,10460,delete,3
+105,Bronx,Crotona - Tremont,10457,insert,5
+106,Bronx,High Bridge - Morrisania,10456,delete,3
+106,Bronx,High Bridge - Morrisania,10452,insert,5
+106,Bronx,High Bridge - Morrisania,10451,insert,3
+107,Bronx,Hunts Point - Mott Haven,10454,update,1
+107,Bronx,Hunts Point - Mott Haven,10455,insert,4
+107,Bronx,Hunts Point - Mott Haven,10459,delete,2
+107,Bronx,Hunts Point - Mott Haven,10474,delete,1
+201,Brooklyn,Greenpoint,11222,update,1
+201,Brooklyn,Greenpoint,11211,insert,5
+202,Brooklyn,Downtown - Heights - Park Slope,11215,update,1
+202,Brooklyn,Downtown - Heights - Park Slope,11201,update,0
+202,Brooklyn,Downtown - Heights - Park Slope,11217,delete,2
+202,Brooklyn,Downtown - Heights - Park Slope,11231,delete,1
+202,Brooklyn,Downtown - Heights - Park Slope,11205,update,1
+203,Brooklyn,Bedford Stuyvesant - Crown Heights,11212,insert,5
+203,Brooklyn,Bedford Stuyvesant - Crown Heights,11233,delete,5
+203,Brooklyn,Bedford Stuyvesant - Crown Heights,11213,delete,1
+203,Brooklyn,Bedford Stuyvesant - Crown Heights,11238,insert,0
+203,Brooklyn,Bedford Stuyvesant - Crown Heights,,update,3
+204,Brooklyn,East New York,11208,insert,5
+204,Brooklyn,East New York,11207,insert,4
+205,Brooklyn,Sunset Park,11220,update,5
+205,Brooklyn,Sunset Park,11232,insert,1
+206,Brooklyn,Borough Park,11204,update,0
+206,Brooklyn,Borough Park,11218,delete,2
+206,Brooklyn,Borough Park,11219,delete,0
+206,Brooklyn,Borough Park,11230,insert,4
+207,Brooklyn,East Flatbush - Flatbush,11225,insert,1
+207,Brooklyn,East Flatbush - Flatbush,11203,delete,4
+207,Brooklyn,East Flatbush - Flatbush,11226,insert,3
+207,Brooklyn,East Flatbush - Flatbush,11210,delete,1
+208,Brooklyn,Canarsie - Flatlands,11236,update,1
+208,Brooklyn,Canarsie - Flatlands,11234,delete,1
+208,Brooklyn,Canarsie - Flatlands,11239,insert,1
+209,Brooklyn,Bensonhurst - Bay Ridge,11209,update,2
+209,Brooklyn,Bensonhurst - Bay Ridge,,insert,0
+209,Brooklyn,Bensonhurst - Bay Ridge,11228,insert,4
+210,Brooklyn,Coney Island - Sheepshead Bay,11235,delete,5
+210,Brooklyn,Coney Island - Sheepshead Bay,11224,insert,3
+210,Brooklyn,Coney Island - Sheepshead Bay,11223,insert,5
+210,Brooklyn,Coney Island - Sheepshead Bay,11229,update,2
+211,Brooklyn,Williamsburg - Bushwick,11206,delete,5
+211,Brooklyn,Williamsburg - Bushwick,11221,delete,3
+211,Brooklyn,Williamsburg - Bushwick,11237,delete,5
+301,Manhattan,Washington Heights - Inwood,10031,delete,3
+301,Manhattan,Washington Heights - Inwood,10033,delete,1
+301,Manhattan,Washington Heights - Inwood,10040,delete,3
+301,Manhattan,Washington Heights - Inwood,10032,insert,5
+301,Manhattan,Washington Heights - Inwood,10034,insert,0
+302,Manhattan,Central Harlem - Morningside Heights,10039,update,1
+302,Manhattan,Central Harlem - Morningside Heights,10027,insert,0
+302,Manhattan,Central Harlem - Morningside Heights,10030,delete,4
+302,Manhattan,Central Harlem - Morningside Heights,10037,insert,2
+302,Manhattan,Central Harlem - Morningside Heights,10026,delete,4
+303,Manhattan,East Harlem,10035,insert,3
+303,Manhattan,East Harlem,10029,update,3
+304,Manhattan,Upper West Side,10025,delete,4
+304,Manhattan,Upper West Side,10024,insert,4
+304,Manhattan,Upper West Side,10023,insert,2
+305,Manhattan,Upper East Side,10044,delete,1
+305,Manhattan,Upper East Side,10021,delete,5
+305,Manhattan,Upper East Side,10028,delete,3
+305,Manhattan,Upper East Side,10128,delete,2
+306,Manhattan,Chelsea - Clinton,10018,delete,0
+306,Manhattan,Chelsea - Clinton,10019,update,5
+306,Manhattan,Chelsea - Clinton,10020,update,5
+306,Manhattan,Chelsea - Clinton,10001,update,4
+306,Manhattan,Chelsea - Clinton,10011,delete,5
+306,Manhattan,Chelsea - Clinton,10036,insert,4
+307,Manhattan,Gramercy Park - Murray Hill,10022,delete,3
+307,Manhattan,Gramercy Park - Murray Hill,10010,update,4
+307,Manhattan,Gramercy Park - Murray Hill,10016,insert,3
+307,Manhattan,Gramercy Park - Murray Hill,10017,delete,2
+308,Manhattan,Greenwich Village - SoHo,10013,update,4
+308,Manhattan,Greenwich Village - SoHo,,delete,2
+308,Manhattan,Greenwich Village - SoHo,10014,insert,2
+309,Manhattan,Union Square - Lower East Side,10009,insert,5
+309,Manhattan,Union Square - Lower East Side,10003,insert,0
+309,Manhattan,Union Square - Lower East Side,10002,insert,4
+310,Manhattan,Lower Manhattan,10006,insert,3
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,

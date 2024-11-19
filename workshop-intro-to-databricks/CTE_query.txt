@@ -1,0 +1,69 @@
+with trips_detailed as (
+select a.*,
+hour(tpep_pickup_datetime) as trip_hour,
+date(tpep_pickup_datetime) as trip_date,
+cast(date_format(tpep_pickup_datetime, 'yyyyMM') as int)
+as trip_month,
+year(tpep_pickup_datetime) as trip_year,
+date_format(tpep_pickup_datetime, 'EEEE') as
+trip_day_of_week,
+b.borough as pickup_borough,
+b.neighborhood as pickup_neighborhood,
+c.borough as dropoff_borough,
+c.neighborhood as dropoff_neighborhood
+from samples.nyctaxi.trips a
+join workspace.MY_SCHEMA.nyc_boroughs b
+on a.pickup_zip = b.zip_code
+join workspace.MY_SCHEMA.nyc_boroughs c
+on a.dropoff_zip = c.zip_code),
+trips_agg as (
+select
+trip_date,
+trip_hour,
+trip_month,
+trip_year,
+trip_day_of_week,
+pickup_borough,
+pickup_neighborhood,
+dropoff_borough,
+dropoff_neighborhood,
+count(*) as trips,
+sum(trip_distance) as total_miles_traveled,
+avg(trip_distance) as avg_distance,
+sum(fare_amount) as total_fare
+from trips_detailed
+group by
+trip_date,
+trip_hour,
+trip_month,
+trip_year,
+trip_day_of_week,
+ pickup_borough,
+ pickup_neighborhood,
+ dropoff_borough,
+ dropoff_neighborhood)
+ select
+trip_date,
+trip_hour,
+trip_month,
+trip_year,
+trip_day_of_week,
+pickup_borough,
+pickup_neighborhood,
+dropoff_borough,
+dropoff_neighborhood,
+trips,
+total_miles_traveled
+avg_distance,
+total_fare,
+lag(trips) over (partition by
+trip_hour,
+trip_month,
+trip_year,
+trip_day_of_week,
+pickup_borough,
+pickup_neighborhood,
+dropoff_borough,
+dropoff_neighborhood
+order by trip_date) as last_month_trips
+from trips_agg

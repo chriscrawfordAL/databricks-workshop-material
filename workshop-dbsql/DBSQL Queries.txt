@@ -1,0 +1,119 @@
+** Sample Taxi Query
+
+select *, date_format(a.tpep_pickup_datetime, 'yyyy-MM-dd') as pickup_date
+from samples.nyctaxi.trips a
+join IDENTIFIER({{catalog}} || '.' || {{schema}} || '.' || {{table}}) b
+on a.pickup_zip = b.zip_code
+
+
+** AI SQL Functions
+
+-- These functions are the following:
+-- ai_analyze_sentiment
+-- ai_classify
+-- ai_extract
+-- ai_fix_grammar
+-- ai_gen
+-- ai_mask
+-- ai_similarity
+-- ai_summarize
+-- ai_translate
+
+SELECT ai_analyze_sentiment('I love Databricks');
+
+SELECT ai_gen('Generate a concise, cheerful email title for a summer bike sale with 20% discount');
+
+SELECT ai_fix_grammar('This sentence have some mistake');
+
+SELECT ai_classify("My password is leaked.", ARRAY("urgent", "not urgent"));
+
+SELECT ai_translate("This function is so amazing!", "sp")
+
+SELECT ai_similarity('Databricks', 'Apache Spark'),  ai_similarity('Apache Spark', 'The Apache Spark Engine');
+
+SELECT ai_summarize('With all the incredible progress being made in the space of Large Language Models, customers have asked us how they can enable their SQL 
+analysts to leverage this powerful technology in their day-to-day workflows.  Today, we are excited to announce the public preview of AI Functions. AI Functions 
+is a built-in DB SQL function, allowing you to access Large Language Models (LLMs) directly from SQL.  With this launch, you can now quickly experiment with 
+LLMs on your company’s data from within a familiar SQL interface. Once you have developed the correct LLM prompt, you can quickly turn that into a production 
+pipeline using existing Databricks tools such as Delta Live Tables or scheduled Jobs. This greatly simplifies both the development and productionization workflow 
+for LLMs.  AI Functions abstracts away the technical complexities of calling LLMs, enabling analysts and data scientists to start using these models without 
+worrying about the underlying infrastructure.  No complicated pipelines, no filing tickets for data engineers to create new processes, or tickets for data 
+scientists to create new models - all it takes is a bit of your creativity to develop the prompt and straightforward SQL to bring the incredible power of LLMs 
+right to your data.  AI Functions lets you harness the power of Large Language Models - from translating from one language to another, summarizing text, 
+suggesting next steps for support teams, or even using multiple function calls for multi-shot prompts.  AI Functions are just the start on our journey to empower 
+users to easily customize LLMs to your business and use LLMs with your data. We can’t wait to see what you build!
+');
+
+** NY Taxi CTE and Materialized View
+
+--uncomment after you have added your catalog and schema to the create statement below:
+--create materialized view <your catalog>.<your schema>.ny_taxi_trips_mv as
+with trips_detailed as (
+select a.*, 
+hour(tpep_pickup_datetime) as trip_hour,
+date(tpep_pickup_datetime) as trip_date,
+cast(date_format(tpep_pickup_datetime, 'yyyyMM') as int) as trip_month,
+year(tpep_pickup_datetime) as trip_year,
+date_format(tpep_pickup_datetime, 'EEEE') as trip_day_of_week,
+b.borough as pickup_borough, 
+b.neighborhood as pickup_neighborhood, 
+c.borough as dropoff_borough, 
+c.neighborhood as dropoff_neighborhood
+from samples.nyctaxi.trips a
+join IDENTIFIER({{catalog}} || '.' || {{schema}} '.' || {{table}} ) b 
+on a.pickup_zip = b.zip_code
+join IDENTIFIER({{catalog}} || '.' || {{schema}} '.' || {{table}} ) c 
+on a.dropoff_zip = c.zip_code),
+
+trips_agg as (
+select
+trip_date,
+trip_hour,
+trip_month,
+trip_year,
+trip_day_of_week,
+pickup_borough,
+pickup_neighborhood,
+dropoff_borough,
+dropoff_neighborhood,
+count(*) as trips,
+sum(trip_distance) as total_miles_traveled,
+avg(trip_distance) as avg_distance,
+sum(fare_amount) as total_fare
+from trips_detailed
+group by
+trip_date,
+trip_hour,
+trip_month,
+trip_year,
+trip_day_of_week,
+pickup_borough,
+pickup_neighborhood,
+dropoff_borough,
+dropoff_neighborhood)
+
+select
+trip_date,
+trip_hour,
+trip_month,
+trip_year,
+trip_day_of_week,
+pickup_borough,
+pickup_neighborhood,
+dropoff_borough,
+dropoff_neighborhood,
+trips,
+total_miles_traveled
+avg_distance,
+total_fare, 
+lag(trips) over (partition by  
+trip_hour,
+trip_month,
+trip_year,
+trip_day_of_week,
+pickup_borough,
+pickup_neighborhood,
+dropoff_borough,
+dropoff_neighborhood
+order by trip_date) as last_month_trips
+from trips_agg
