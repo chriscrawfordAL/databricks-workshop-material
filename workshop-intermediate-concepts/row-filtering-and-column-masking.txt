@@ -1,22 +1,19 @@
+-- Create a Row Level Filter
+
 CREATE
 OR REPLACE FUNCTION city_filter(city_param STRING) RETURN city_param like "RCK";
 SELECT
   city_filter('RCK'),
-  city_filter('WIL')
+  city_filter('WIL');
 ALTER TABLE
   silver_traffic_stops_2016_2020
 SET
   ROW FILTER city_filter ON (city_of_stop);
+
 -- create a SQL function for a simple column mask:
-  
+
 CREATE OR REPLACE FUNCTION driver_age_mask(driver_age STRING) RETURN IF(
     is_account_group_member('bu_owner'), driver_age, "****"
   );
-
-CREATE OR REPLACE FUNCTION borough_mask(borough STRING) RETURN IF(
-    is_account_group_member('bu_owner'), borough, "****"
-  );
--- Simple Mask
-  --  IF(is_account_group_member('all_analysts'), MASK(driver_age, '*', '*'), MASK(driver_age, '*', '*')); -- Advanced "nn"
 
 ALTER TABLE silver_traffic_stops_2016_2020 ALTER COLUMN driver_age SET MASK driver_age_mask;
